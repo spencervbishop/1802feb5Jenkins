@@ -2,19 +2,22 @@ package QuestionThree;
 
 public class Three {
 
-    public static String reverse(String a){
+    public static String myReverse(String a){
         int l = a.length();
-        for(int i=0;i<l; i++){
-            String s = new String(a.substring(0,i)+s);
+        char[] cArray = a.toCharArray();
+        char[] reverseArray = new char[l];
+        for(int i=0; i<l; i++){
+            reverseArray[i] = cArray[l-i-1];
         }
+        String reversed = new String(reverseArray);
+        return reversed;
 
         }
 
     public static void main(String[] args) {
-        String name = "spencer";
-        int n = name.length();
-        //char[] array = new char[n];
-        String reversea = reverse(name, n);
-        System.out.println(reversea);
+        String name = "it's not true, i did not hit her, its bullshit. i did not hit her. i did naht. oh hi mark";
+        System.out.println(myReverse(name));
+
+
     }
 }
