@@ -15,7 +15,7 @@ public class Three {
         }
 
     public static void main(String[] args) {
-        String name = "it's not true, i did not hit her, its bullshit. i did not hit her. i did naht. oh hi mark";
+        String name = "i did not hit her. it's not true. its bullshit. i did not hit her. i did naht. oh hi mark";
         System.out.println(myReverse(name));
 
 

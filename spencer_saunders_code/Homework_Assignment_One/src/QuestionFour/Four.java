@@ -2,7 +2,7 @@ package QuestionFour;
 
 public class Four {
     public static void main(String[] args){
-        int N = 0; //replace N with whatever
+        int N = 5; //replace N with whatever
         factorial(N);
     }
 

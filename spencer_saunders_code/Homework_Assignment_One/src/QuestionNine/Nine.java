@@ -34,5 +34,13 @@ public class Nine {
                 index++;
             }
         }
+        System.out.println("Array:");
+        for(int j=0; j<20; j++){
+            System.out.println(array[j]);
+        }
+        System.out.println("Primes:");
+        for(int k=0; k<20; k++){
+            System.out.println(primes[k]);
+        }
     }
 }
