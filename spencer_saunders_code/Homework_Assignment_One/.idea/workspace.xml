@@ -32,11 +32,30 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Seven.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Seven.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/QuesitonSeven/Seven.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="5" column="50" lean-forward="false" selection-start-line="5" selection-start-column="50" selection-end-line="5" selection-end-column="50" />
+            <state relative-caret-position="196">
+              <caret line="22" column="37" lean-forward="false" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#650#651#0" expanded="true" />
+                <element signature="e#697#698#0" expanded="true" />
+                <element signature="e#837#838#0" expanded="true" />
+                <element signature="e#896#897#0" expanded="true" />
+                <element signature="e#1026#1027#0" expanded="true" />
+                <element signature="e#1060#1061#0" expanded="true" />
+                <element signature="e#1184#1194#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="50">
+              <caret line="2" column="6" lean-forward="false" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -99,6 +118,7 @@
         <option value="$PROJECT_DIR$/src/QuestionEight/Eight.java" />
         <option value="$PROJECT_DIR$/src/QuestionFive/Five.java" />
         <option value="$PROJECT_DIR$/src/QuesitonSeven/Seven.java" />
+        <option value="$PROJECT_DIR$/src/.gitignore" />
       </list>
     </option>
   </component>
@@ -168,7 +188,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Five">
+  <component name="RunManager" selected="Application.Seven">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -214,14 +234,14 @@
       <module name="Homework_Assignment_One" />
       <envs />
     </configuration>
-    <configuration name="Nine" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="One" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="QuestionNine.*" />
+          <option name="PATTERN" value="QuestionOne.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="QuestionNine.Nine" />
+      <option name="MAIN_CLASS_NAME" value="QuestionOne.One" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -233,14 +253,14 @@
       <module name="Homework_Assignment_One" />
       <envs />
     </configuration>
-    <configuration name="One" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Seven" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="QuestionOne.*" />
+          <option name="PATTERN" value="QuesitonSeven.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="QuestionOne.One" />
+      <option name="MAIN_CLASS_NAME" value="QuesitonSeven.Seven" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -346,19 +366,19 @@
       <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Application.Nine" />
-      <item index="1" class="java.lang.String" itemvalue="Application.One" />
-      <item index="2" class="java.lang.String" itemvalue="Application.Three" />
-      <item index="3" class="java.lang.String" itemvalue="Application.Eight" />
-      <item index="4" class="java.lang.String" itemvalue="Application.Five" />
+      <item index="0" class="java.lang.String" itemvalue="Application.One" />
+      <item index="1" class="java.lang.String" itemvalue="Application.Three" />
+      <item index="2" class="java.lang.String" itemvalue="Application.Eight" />
+      <item index="3" class="java.lang.String" itemvalue="Application.Five" />
+      <item index="4" class="java.lang.String" itemvalue="Application.Seven" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.Five" />
-        <item index="1" class="java.lang.String" itemvalue="Application.One" />
-        <item index="2" class="java.lang.String" itemvalue="Application.Eight" />
-        <item index="3" class="java.lang.String" itemvalue="Application.Three" />
-        <item index="4" class="java.lang.String" itemvalue="Application.Nine" />
+        <item index="0" class="java.lang.String" itemvalue="Application.Seven" />
+        <item index="1" class="java.lang.String" itemvalue="Application.Five" />
+        <item index="2" class="java.lang.String" itemvalue="Application.One" />
+        <item index="3" class="java.lang.String" itemvalue="Application.Eight" />
+        <item index="4" class="java.lang.String" itemvalue="Application.Three" />
       </list>
     </recent_temporary>
   </component>
@@ -375,12 +395,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1517873359580</updated>
-      <workItem from="1517873365097" duration="23155000" />
+      <workItem from="1517873365097" duration="26503000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23155000" />
+    <option name="totallyTimeSpent" value="26503000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
@@ -512,8 +532,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/QuesitonSeven/Seven.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="5" column="50" lean-forward="false" selection-start-line="5" selection-start-column="50" selection-end-line="5" selection-end-column="50" />
+        <state relative-caret-position="196">
+          <caret line="22" column="37" lean-forward="false" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#650#651#0" expanded="true" />
+            <element signature="e#697#698#0" expanded="true" />
+            <element signature="e#837#838#0" expanded="true" />
+            <element signature="e#896#897#0" expanded="true" />
+            <element signature="e#1026#1027#0" expanded="true" />
+            <element signature="e#1060#1061#0" expanded="true" />
+            <element signature="e#1184#1194#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" column="6" lean-forward="false" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
           <folding />
         </state>
       </provider>
