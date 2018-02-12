@@ -1,0 +1,71 @@
+qOne: 3/3 tests passed
+output: N/A
+
+qTwo: 3/3 tests passed
+output:
+
+You should avoid hard coding numbers in loops when the terminations condition can be easily retrieved from the size of the array
+
+qThree:
+output:
+
+reversed is technically a temporary variable
+
+qFour: 4/4 tests passed
+output: N/A
+
+Again like in question two you are using hard-coded (magic numbers) you should avoid that.
+        int product = 1;
+        if(n<0){
+            System.out.println("Can't compute a negative factorial.");
+        }if(n==0){
+            System.out.println(1); <-- this should be System.out.println(product) since ultimately product will be the return of the method anyway;
+        }
+
+qFive: 3/3 tests passed
+output: N/A
+
+qSix: 2/2 tests passed
+output: N/A
+
+qSeven: 3/3 tests passed
+output: N/A
+
+qEight: 1/1 tests passed
+output: N/A
+
+qNine: 3/3 tests passed
+output: N/A
+
+qTen: 2/2 tests passed
+output: N/A
+
+qEleven: 1/1 tests passed
+output: N/A
+
+qTwelve: 1/1 tests passed
+output: N/A
+
+qThirteen: 1/1 tests passed
+output: N/A
+
+qFourteen: 3/3 tests passed
+output: N/A
+
+qFifteen: 4/4 tests passed
+output: N/A
+
+qSixteen: 1/1 tests passed
+output: N/A
+
+qSeventeen: 1/1 tests passed
+output: N/A
+
+qEighteen: 3/3 tests passed
+output: N/A
+
+qNineteen: 3/3 tests passed
+output: N/A
+
+qTwenty: 1/1 tests passed
+output: N/A
