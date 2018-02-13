@@ -1,0 +1,37 @@
+CREATE TABLE classmates(
+	id serial PRIMARY KEY, 
+	name varchar(20),
+	age integer, 
+	favorite_language varchar(30),
+ email varchar(60)
+);
+
+CREATE TABLE communication(
+	email varchar(60) PRIMARY KEY,
+	name varchar(20), 
+	prefer_chat varchar(20),
+);
+
+INSERT INTO classmates(name, age, favorite_language)
+	VALUES('spencer', 24, 'java', 'spencer@gmail.com'),
+			('Alora', 22, 'c++', 'alora@gmail.com'), 
+			('Kayla', 26, 'java', 'kayla@gmail.com'),
+			('Flynn', 22, 'HTML', 'flynn@gmail.com'),
+			('Paul', 23, 'c#', 'paul@gmail.com'), 
+			('Anthony', 22, 'java', 'anthony@gmail.com'), 
+			('August', 35, 'FORTRAN', 'august@gmail.com'),
+			('Robert', 29, 'Haskell', 'robert@gmail.com'),
+			('Joe', 24, 'Java', 'joe@gmail.com'),
+			('Flo', 23, 'Excel', 'flo@gmail.com')
+			
+INSERT INTO communication(email, name, prefer_chat)
+	VALUES('spencer@gmail.com', 'spencer', 'text'),
+			('alora@gmail.com','Alora', 'email'), 
+			('kayla@gmail.com', 'Kayla', 'slack'),
+			('flynn@gmail.com', 'Flynn', 'carrier pigeon'),
+			('paul@gmail.com', 'Paul', 'email'), 
+			('anthony@gmail.com','Anthony', 'secret codes'), 
+			('august@gmail.com', 'August', 'FORTRAN'),
+			('robert@gmail.com', 'Robert', 'Facebook Messenger'),
+			('joe@gmail.com','Joe', 'satellite phone'),
+			('flo@gmail.com','Flo', 23, 'letter writing')
