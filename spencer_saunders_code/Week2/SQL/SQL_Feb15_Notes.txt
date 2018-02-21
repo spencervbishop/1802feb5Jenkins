@@ -1,0 +1,148 @@
+----SQL NOTES FROM FEB15
+----=====================================
+-- UPDATE teachers SET favorite_quote = 'Dont fail the panel';
+-- ALTER TABLE teachers ADD COLUMN favorite_quote text
+
+-- SELECT * FROM teachers WHERE favorite_quote LIKE '%f__l%';
+
+--VIEWS
+-- CREATE VIEW classes_teaching AS
+-- SELECT * FROM classes NATURAL JOIN teachers;
+-- SELECT * FROM classes_teaching;
+-- INSERT INTO classes (name, teacher_id) VALUES('Hibernate', 2);
+
+--SUBQUERIES
+-- SELECT * FROM classes WHERE teacher_id IN
+-- 	(SELECT teacher_id FROM teachers WHERE last_name LIKE '%e%');
+
+--EXISTS
+-- SELECT EXISTS
+-- 	(SELECT teacher_id FROM teachers WHERE first_name LIKE 'August');
+	
+-- SELECT * FROM teachers ORDER BY last_name LIMIT 1;
+
+-- SELECT * FROM teachers WHERE teacher_id IN(
+-- 	SELECT teacher_id FROM teachers ORDER BY last_name LIMIT 1
+-- ) OR teacher_id IN(
+-- 	SELECT teacher_id FROM teachers ORDER BY last_name DESC LIMIT 1
+-- 	)
+
+-- SELECT first_name FROM(
+-- 	SELECT * FROM teachers
+-- ) AS subquery;
+
+-- WITH teacher AS (
+-- 	SELECT teacher_id FROM  teachers WHERE first_name = 'August'
+-- ) SELECT * FROM classes WHERE teacher_id = (SELECT teacher_id FROM teacher);
+
+-- WITH RECURSIVE t(n) AS(
+-- 		VALUES(1)
+-- 		UNION ALL
+-- 			SELECT n+1 FROM t WHERE n<100
+-- ) 	SELECT sum(n) FROM t; --SELECT * FROM t;
+
+-- WITH RECURSIVE t(n) AS(
+-- 			VALUES('a')
+-- 			UNION ALL
+-- 				SELECT chr(ascii(n)+1) FROM t WHERE ascii(n) <ascii('a')+25
+-- ) SELECT n FROM t;
+
+--TRANSACTIONS
+CREATE TABLE transaction(
+	id SERIAL PRIMARY KEY,
+	data INTEGER
+);
+
+
+BEGIN;
+	INSERT INTO transaction (data) VALUES (1);
+	SAVEPOINT save_point;
+	INSERT INTO transaction (data) VALUES (2);
+	ROLLBACK TO save_point;
+	RELEASE save_point;
+	INSERT INTO transaction (data) VALUES (3);
+	INSERT INTO transaction (data) VALUES ('cat');
+COMMIT;
+ROLLBACK;
+SELECT * FROM transaction;
+
+-- --SEQUENCES
+
+-- CREATE SEQUENCE IF NOT EXISTS my_first_sequence;
+
+-- CREATE SEQUENCE IF NOT EXISTS my_second_sequence
+-- 	INCREMENT BY 1 --DEFAULT 1, DECREMENT
+-- 	MINVALUE 1 --DEFAULT 1, if incrementing or -2^(63)-1 for decrementing
+-- 	MAXVALUE 10000 --DEFAULT 2^(63)-1 IF INCREMENTING, -1 IF DECREMENTING
+-- 	START 10 --starting point for sequence, default is minvalue/maxvalue
+-- 	CACHE 1 --default 1, how many values to maintain in memory
+-- 	CYCLE -- (or NO CYCLE) whether sequence cycles: default no cycle
+-- 	OWNED BY NONE --or: OWNED BY table.column -specifies owner
+-- ;
+
+-- CREATE TABLE IF NOT EXISTS my_serial_implementation(
+-- 	id INTEGER PRIMARY KEY DEFAULT(nextval('my_second_sequence')),
+-- 	other_data VARCHAR(1)
+-- );
+
+-- INSERT INTO my_serial_implementation (other_data) VALUES ('a'), (
+-- 'b'), ('c');
+
+-- SELECT * FROM my_serial_implementation;
+
+-- DROP TABLE my_serial_implementation;
+-- DROP SEQUENCE my_first_sequence;
+-- DROP SEQUENCE my_second_sequence;
+
+----FUNCTIONS
+-- CREATE OR REPLACE FUNCTION add_trainer(fn VARCHAR, ln VARCHAR)
+-- RETURNS void AS $$
+-- BEGIN
+-- 	INSERT INTO teachers (first_name, last_name) VALUES (fn, ln);
+-- END;
+-- $$ LANGUAGE plpgsql;
+
+-- SELECT add_trainer('John', 'Doe');
+-- SELECT * FROM teachers;
+
+-- CREATE OR REPLACE FUNCTION delete_trainer(pk INTEGER)
+-- RETURNS void AS $$
+-- BEGIN
+-- 	DELETE FROM teachers WHERE teacher_id = pk;
+-- END;
+-- $$ LANGUAGE plpgsql;
+
+-- SELECT delete_trainer(5);
+-- SELECT * FROM teachers;
+
+-- CREATE OR REPLACE FUNCTION is_even(value INTEGER)
+-- RETURNS boolean AS $$
+-- 	BEGIN
+-- 		RETURN value % 2 = 0;
+-- 	END;
+-- $$ LANGUAGE plpgsql;
+
+-- SELECT *, is_even(teacher_id) AS even FROM teachers;
+
+CREATE OR REPLACE FUNCTION show_trainers() RETURNS refcursor AS $$
+	DECLARE
+		ref refcursor;
+	BEGIN
+		OPEN ref FOR SELECT first_name, last_name FROM teachers;
+		RETURN ref;
+	END;
+$$ LANGUAGE plpgsql;
+
+SELECT show_trainers();
+FETCH ALL IN "<unnamed portal 7>";
+
+CREATE OR REPLACE FUNCTION show_trainers2(ref refcursor)
+	RETURNS refcursor AS $$
+		BEGIN
+			OPEN ref FOR SELECT first_name, last_name FROM teachers;
+			RETURN ref;
+		END;
+$$ LANGUAGE plpgsql;
+
+SELECT show_trainers2('my_cursor');
+FETCH ALL IN "my_cursor";
