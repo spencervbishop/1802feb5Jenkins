@@ -1,0 +1,20 @@
+qOne: 
+
+qThree: reversed is technically a temporary variable
+
+qSix:
+
+qSeven: 3/3 tests passed
+output: N/A
+
+qFifteen: 4/4 tests passed
+output: N/A
+
+qEighteen: 3/3 tests passed
+output: N/A
+
+qNineteen: 3/3 tests passed
+output: N/A
+
+qTwenty: 1/1 tests passed
+output: N/A
