@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+
+#app{
+	text-align: center;
+	margin-right: 20px;
+	margin-left: 20px;
+	padding: 20px;
+	width: 50%;
+	background-color: rgb(82, 103, 135);
+	/*background-color: rgb(202, 230, 240);*/
+	min-width: 150px;
+	min-height: 150px;
+
+}
+
+#list li{
+	list-style-type: none;
+	padding: 12px 45px;
+    margin-bottom: 6px;
+    margin-right: 45px;
+    background-color: rgb(55, 71, 95)/*rgb(137, 167, 248)*/;
+
+}
+
+#list li:hover{
+    background-color: rgb(44, 92, 223);
+}
+
+#list li:active{
+	background-color: rgb(44, 92, 223);
+}
+#btn{
+	right: 150px;
+}
+/*	#start,
+	#finish{
+		min-width: 100px;
+		min-height: 100px;
+		border: 1px;
+	}
+
+       #start {
+           position: absolute;
+           top: 100px;
+           left: 200px;
+       }
+
+       #finish {
+           position: absolute;
+           top: 200px;
+           left: 500px;
+       }*/
+   </style>
+</head>
+<body>
+
+	<div id='app'>
+		<div id="btn">
+			<button id="remove">X</button>
+		</div>
+		<div id="list">
+		<!-- <div id="start"><p draggable="true">drag me</p></div>
+		<div id="finish"></div> -->
+		</div>
+		<div id = "editlist">
+
+			<button id="button1">Add New</button>
+			<input id="todoitem" type="text" placeholder="Add New Item"/>
+		</div>
+	</div>
+
+</body>
+<script>
+	// document.querySelector("#draggable").addEventListener('dragstart', (evt)=> {
+	// 	evt.dataTransfer.setData("text", evt.target.innerText);
+
+	// });
+
+	// document.queryselector("#finish").addEventListener('dragover', (evt) =>{
+	// 	evt.preventDefault();
+	// });
+
+	// document.queryselector("#finish").addEventListener('drop', (evt) =>{
+	// 	evt.preventDefault();
+	// 	let data = event.dataTransfer.getData("text");
+
+	// 	let old = document.querySelector('#draggable', (evt)=> {
+	// 	evt.dataTransfer.setData("text", evt.target.innerText);
+
+	// });
+	// 	let p = old.parentNode;
+	// 	p.removeChild(old);
+
+	// 	let newP = document.createElement('p');
+	// 	newP.id = 'draggable';
+	// 	newP.draggable = true;
+	// 	newP.innerText = data;
+
+	// 	document.querySelector("#finish").appendChild(newP);
+	// 	//alert(data);
+	// });
+
+	// document.queryselector("#start").addEventListener('dragover', (evt) =>{
+	// 	evt.preventDefault();
+	// });
+
+	// document.queryselector("#start").addEventListener('drop', (evt) =>{
+	// 	evt.preventDefault();
+	// 	let data = event.dataTransfer.getData("text");
+
+	// 	let old = document.querySelector('#draggable');
+	// 	let p = old.parentNode;
+	// 	p.removeChild(old);
+
+	// 	let newP = document.createElement('p');
+	// 	newP.id = 'draggable';
+	// 	newP.draggable = true;
+	// 	newP.innerText = data;
+	// 	newP.addEventListener('dragstart', (evt)=> {
+	// 	evt.dataTransfer.setData("text", evt.target.innerText);
+
+	// });
+
+	// 	document.querySelector("#start").appendChild(newP);
+	// 	//alert(data);
+	// });
+
+
+//MAKES THE LIST
+var todo = ["Design project", "Code Project", "Sleep"];
+
+function makeUL(array) {
+    // Create the list element:
+    var list = document.createElement('ul');
+
+    for(var i = 0; i < array.length; i++) {
+        // Create the list item:
+        var item = document.createElement('li');
+
+        // Set its contents:
+        item.appendChild(document.createTextNode(array[i]));
+
+        // Add it to the list:
+        list.appendChild(item);
+    }
+
+    // Finally, return the constructed list:
+    return list;
+}
+
+var weblist = makeUL(todo);
+document.getElementById('list').appendChild(weblist);
+
+	//ON BUTTON CLICK, IT ADDS INPUT TO THE LIST AND EMPTIES THE INPUT BOX	
+	document.getElementById('button1').addEventListener('click', function (){
+		var text = document.getElementById('todoitem').value;
+		// Create the list item:
+        var item = document.createElement('li');
+
+        // Set its contents:
+        item.appendChild(document.createTextNode(text));
+
+        // Add it to the list:
+        weblist.appendChild(item);
+        document.getElementById('todoitem').value = "";
+	});
+
+</script>
+
+</html>
