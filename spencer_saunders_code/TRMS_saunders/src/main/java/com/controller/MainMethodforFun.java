@@ -2,6 +2,7 @@ package com.controller;
 
 import com.beans.Employee;
 import com.beans.Supervisor;
+import com.dao.EmployeeJDBC;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -9,13 +10,8 @@ import java.util.Date;
 public class MainMethodforFun {
     public static void main(String[] args) throws Exception{
 
+        Employee emp = new Employee("spencer", "saunders", "spencer111", "tylerbishop", 1, true, false, false, 1, 1000.00);
 
-        SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
-        Date today = new Date();
-        System.out.println(format.format(today));
-        Date date = format.parse("03/08/2018");
-        long daysDiff = (date.getTime()-today.getTime())/(24*60*60*1000);
-        System.out.println(daysDiff);
 
     }
 }

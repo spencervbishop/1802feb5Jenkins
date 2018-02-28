@@ -9,11 +9,11 @@ public interface EmployeeDao {
 
     public Employee getEmployee(String username);
 
-    public List<Employee> getEmployeesOfASupervisor(Supervisor s);
+    public List<Employee> getEmployeesOfASupervisor(Employee s);
 
-    public int newEmployee(Employee e);
+    public int saveEmployee(Employee e);
 
-    public void updateEmployee(int id, Employee e);
+    public int updateEmployee(int id, Employee e);
 
     public void deleteEmployee(int emp_id);
 

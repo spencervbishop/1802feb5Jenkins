@@ -8,6 +8,7 @@ public class Reimbursement extends Application {
     int application_id;
     int employee_id;
     double amount_awarded;
+    String testingVar;
 
     //CONSTRUCTORS
     public Reimbursement(){}
@@ -60,6 +61,16 @@ public class Reimbursement extends Application {
 
     public void setAmount_awarded(double amount_awarded) {
         this.amount_awarded = amount_awarded;
+    }
+
+    @Override
+    public String getTestingVar() {
+        return testingVar;
+    }
+
+    @Override
+    public void setTestingVar(String testingVar) {
+        this.testingVar = testingVar;
     }
 
     //TOSTRING HASHCODE EQUALS ETC

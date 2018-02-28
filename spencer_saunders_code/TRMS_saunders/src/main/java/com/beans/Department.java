@@ -5,25 +5,26 @@ public class Department {
     int dept;
     int dh_id;
     String dept_name;
-    int benco_id;
+    String testingVar;
 
 
     //CONSTRUCTORS
     public Department(){}
 
     //USER --> DATABASE
-    public Department(int dh_id, String dept_name, int benco_id) {
+    public Department(int dh_id, String dept_name) {
         this.dh_id = dh_id;
         this.dept_name = dept_name;
-        this.benco_id = benco_id;
+    }
+    public Department(String dept_name) {
+        this.dept_name = dept_name;
     }
 
     //DATABASE --> USER
-    public Department(int dept, int dh_id, String dept_name, int benco_id) {
+    public Department(int dept, int dh_id, String dept_name) {
         this.dept = dept;
         this.dh_id = dh_id;
         this.dept_name = dept_name;
-        this.benco_id = benco_id;
     }
 
     public int getDept() {
@@ -50,12 +51,12 @@ public class Department {
         this.dept_name = dept_name;
     }
 
-    public int getBenco_id() {
-        return benco_id;
+    public String getTestingVar() {
+        return testingVar;
     }
 
-    public void setBenco_id(int benco_id) {
-        this.benco_id = benco_id;
+    public void setTestingVar(String testingVar) {
+        this.testingVar = testingVar;
     }
 
     //HASHCODE TOSTRING EQUALS ETC

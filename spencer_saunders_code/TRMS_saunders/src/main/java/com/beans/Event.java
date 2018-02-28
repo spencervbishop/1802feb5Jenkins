@@ -6,6 +6,7 @@ public class Event {
     double rate;
     String event_type;
     String grading_format;
+    String testingVar;
 
     //CONSTRUCTORS
 
@@ -58,6 +59,14 @@ public class Event {
 
     public void setGrading_format(String grading_format) {
         this.grading_format = grading_format;
+    }
+
+    public String getTestingVar() {
+        return testingVar;
+    }
+
+    public void setTestingVar(String testingVar) {
+        this.testingVar = testingVar;
     }
 
     //HASHCODE TOSTRING EQUALS ETC

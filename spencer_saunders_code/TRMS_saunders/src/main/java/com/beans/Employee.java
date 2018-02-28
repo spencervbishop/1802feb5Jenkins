@@ -12,9 +12,13 @@ public class Employee {
     EmployeeType title;
     private int super_id;
     private int benco_id;
+    boolean isdh;
+    boolean isds;
+    boolean isbenco;
 //    private int dh_id;
     int department;
     double avail_amount;
+    String testingVar;
 //    double pending_amount;
 //    double awarded_amount;
 
@@ -24,18 +28,28 @@ public class Employee {
     };
 
     //USER --> DATABASE
-    public Employee(String fname, String lname, String uname, String pass, int ds, int dept, double amount){
+    public Employee(String fname, String lname, String uname, String pass, int super_id,
+                    boolean isds, boolean isdh, boolean isbenco, int dept, double avail_amt){
         first_name = fname;
         last_name = lname;
         username = uname;
         password = pass; //HASH THIS
-        super_id = ds;
+        this.super_id = super_id;
         department = dept;
-        avail_amount = amount;
+        this.avail_amount = avail_amt;
+        if(isds && !isdh & !isbenco){
+            title = EmployeeType.DIRECT_SUPERVISOR;
+        }else if(isdh && !isbenco){
+            title = EmployeeType.DEPT_HEAD;
+        }else if(isbenco){
+            title = EmployeeType.BENCO;
+        }else if(!isds && !isdh & !isbenco){
+            title = EmployeeType.EMPLOYEE;
+        }
     }
     //DATABASE --> USER
     public Employee(int emp_id, String fname, String lname, String username, String password, int ds,
-                    int benco, boolean isDs, boolean isDh, boolean isBenco, int dept, double amount){
+                    int benco, boolean isds, boolean isdh, boolean isbenco, int dept, double amount){
 
         this.emp_id = emp_id;
         first_name = fname;
@@ -46,13 +60,14 @@ public class Employee {
         benco_id = benco;
         department = dept;
         avail_amount = amount;
-        if(isDs){
+
+        if(isds && !isdh & !isbenco){
             title = EmployeeType.DIRECT_SUPERVISOR;
-        }else if(isDh){
+        }else if(isdh && !isbenco){
             title = EmployeeType.DEPT_HEAD;
-        }else if(isBenco){
+        }else if(isbenco){
             title = EmployeeType.BENCO;
-        }else{
+        }else if(!isds && !isdh & !isbenco){
             title = EmployeeType.EMPLOYEE;
         }
     }
@@ -107,6 +122,26 @@ public class Employee {
         this.title = title;
     }
 
+    public int getTitleNumber(){
+        switch(title){
+            case EMPLOYEE:{
+                return 1;
+            }
+            case DIRECT_SUPERVISOR:{
+                return 2;
+            }
+            case DEPT_HEAD:{
+                return 3;
+            }
+            case BENCO:{
+                return 4;
+            }
+            default:{
+                return -1;
+            }
+        }
+    }
+
     public int getSuper_id() {
         return super_id;
     }
@@ -137,6 +172,32 @@ public class Employee {
 
     public void setAvail_amount(double avail_amount) {
         this.avail_amount = avail_amount;
+    }
+
+    public boolean isDh(){return isdh; }
+
+    public boolean isDs(){return isds;}
+
+    public boolean isBenco(){return isbenco;}
+
+    public void setIsdh(boolean isdh) {
+        this.isdh = isdh;
+    }
+
+    public void setIsds(boolean isds) {
+        this.isds = isds;
+    }
+
+    public void setIsbenco(boolean isbenco) {
+        this.isbenco = isbenco;
+    }
+
+    public String getTestingVar() {
+        return testingVar;
+    }
+
+    public void setTestingVar(String testingVar) {
+        this.testingVar = testingVar;
     }
 
     //TOSTRING, HASHCODE, EQUALS, ETC

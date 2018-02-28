@@ -20,6 +20,7 @@ public class Application {
     int work_time_missed;
     double proj_reimb;
     boolean urgent;
+    String testingVar;
 
     //CONSTRUCTORS
 
@@ -198,6 +199,7 @@ public class Application {
     public void setEvent_date(Date event_date) {
         //EVENT SHOULD BE MORE THAN A WEEK AWAY
         //THIS IS CHECKED IN THE CONTROL LAYER
+        //SET UP A TRIGGER IN THE DATABASE
         this.event_date =event_date;
 
         //IF EVENT IS LESS THAN TWO WEEKS AWAY, REQUEST BECOMES URGENT
@@ -208,6 +210,14 @@ public class Application {
         if(daysDiff<=13){
             this.urgent = true;
         }
+    }
+
+    public String getTestingVar() {
+        return testingVar;
+    }
+
+    public void setTestingVar(String testingVar) {
+        this.testingVar = testingVar;
     }
 
     //TOSTRING, EQUALS, HASHCODE, ETC
