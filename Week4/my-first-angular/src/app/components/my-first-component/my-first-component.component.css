@@ -1,0 +1,9 @@
+h1 {
+    color: yellow;
+    background: black
+}
+
+h1.invert {
+    background: white;
+    color: black;
+}
