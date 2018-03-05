@@ -1,0 +1,21 @@
+.container {
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: center;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.item {
+    border: 1px solid #ccc;
+    background-color: lavender;
+    width: 90%;
+    text-align: center;
+    padding: 15px;
+    margin: 0 0 2px 20px;
+}
+
+.item input[type="text"] {
+    width: 70%;
+}

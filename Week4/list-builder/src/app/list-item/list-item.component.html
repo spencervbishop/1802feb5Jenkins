@@ -1,0 +1,3 @@
+<li class="list-item" 
+[ngClass]="{'selected': selected}"
+(click)="selectMe()"><label>{{item.value}}</label><input type="checkbox" name="complete" [id]="item.id" [(ngModel)]="item.complete"></li>
