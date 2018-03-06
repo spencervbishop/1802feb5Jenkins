@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.beans.Employee;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,9 +9,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 @WebServlet(urlPatterns = {"/api/*"}, loadOnStartup = 1)
 public class MainServlet extends HttpServlet {
+    private final static Map<String, Controller> controllers = new HashMap<>(0);
+
+    @Override
+    public void init() throws ServletException{
+        super.init();
+    }
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
@@ -23,7 +32,7 @@ public class MainServlet extends HttpServlet {
             //processGet(req, resp, controllerPath);
             resp.setStatus(404);
         } else if(req.getMethod().equalsIgnoreCase("POST")) {
-            //TODO handle post requests
+            processPost(req, resp, controllerPath);
         } else if(req.getMethod().equalsIgnoreCase("PUT")) {
             //processPut(req, resp, controllerPath);
             System.out.println("process put");
@@ -32,21 +41,26 @@ public class MainServlet extends HttpServlet {
         }
     }
 
-//    private void processGet(HttpServletRequest req, HttpServletResponse resp, String controllerPath) throws IOException, ServletException {
-//        Object r;
-//        String rData = null;
-//        if(controllerPath.equalsIgnoreCase("/lists")) {
-//            r = ((ListDataController)controllers.get("lists")).getAllLists();
-//            rData = new ObjectMapper().writeValueAsString(r);
+    private void processPost(HttpServletRequest req, HttpServletResponse resp, String controllerPath) throws IOException, ServletException {
+        Object r;
+        String rData = null;
+        if(controllerPath.equalsIgnoreCase("/login")) {
+            Employee testEmployee = (Employee)parseBody(req.getReader(), Employee.class);
+            //Employee emp = (Employee)parseBody(req.getParameter("employee"));
+            String uname = testEmployee.getUsername();
+            String pword = testEmployee.getPassword();
+            r = ((EmployeeController) controllers.get("login")).getEmployee(uname, pword);
+            rData = new ObjectMapper().writeValueAsString(r);
+        }
 //        } else if(controllerPath.equalsIgnoreCase("/lists/list")) {
 //            int id = Integer.parseInt(req.getParameter("id"));
-//            r = ((ListDataController)controllers.get("lists")).getOneList(id);
+//            r = ((EmployeeController)controllers.get("lists")).getOneList(id);
 //            rData = new ObjectMapper().writeValueAsString(r);
 //
 //        }
-//        resp.setHeader("Content-Type", "application/json");
-//        resp.getWriter().write(rData);
-//    }
+        resp.setHeader("Content-Type", "application/json");
+        resp.getWriter().write(rData);
+    }
 //
 //    private void processPut(HttpServletRequest req, HttpServletResponse resp, String controllerPath) throws IOException, ServletException {
 //        int r;
@@ -60,15 +74,14 @@ public class MainServlet extends HttpServlet {
 //        }
 //    }
 
+    //Token json = mapper.readValue(req.getReader(), mapper.getTypeFactory().constructType(Token.class));
+
+
     private Object parseBody(BufferedReader in, Class clazz) throws IOException {
-        Object o = new ObjectMapper().readValue(in, clazz);
-        return o;
+        Object mapper = new ObjectMapper().readValue(in, clazz);
+        return mapper;
     }
 
-    @Override
-    public void init() throws ServletException{
-        super.init();
-    }
 
     @Override
     public void destroy(){
@@ -87,5 +100,6 @@ public class MainServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.getWriter().write("Received your POST request");
+        resp.setStatus(200);
     }
 }

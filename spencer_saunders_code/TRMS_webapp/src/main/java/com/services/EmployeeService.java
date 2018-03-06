@@ -21,9 +21,13 @@ public class EmployeeService {
     }
 
     public Employee getEmployee(String username){
-        Employee emp = dao.getEmployee(username);
-        emp.setTestingVar("service tested");
-        return emp;
+       try {
+           Employee emp = dao.getEmployee(username);
+           emp.setTestingVar("service tested");
+            return emp;
+       }catch(Exception e){
+           return new Employee();
+       }
     }
 
     public int updateEmployeeInfo(int id, Employee emp){
