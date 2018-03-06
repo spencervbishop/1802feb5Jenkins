@@ -1,0 +1,11 @@
+<ul *ngIf="lists && lists.length > 0;else nolists" 
+class="container list-container">
+  <li routerLink="/list/{{list.id}}" 
+  *ngFor="let list of lists">
+    <label>{{list.title}}</label>
+    <span>{{list.items.length}}</span>
+  </li>
+</ul>
+<ng-template #nolists>
+  <div>No lists to display</div>
+</ng-template>

@@ -1,0 +1,14 @@
+<h1>HELLO WORLD!</h1>
+
+<h2>Structural Directives</h2>
+<h3 *ngIf="show">This will be shown</h3>
+<h3 *ngIf="noshow">This will be hidden</h3>
+
+<h2>Number: {{myNumber}}</h2>
+<h1 [class.invert]="myNumber % 2 == 0" *ngIf="myNumber > 9000">IT'S OVER 9000!!!</h1>
+<input type="number" [(ngModel)]="myNumber">
+<h2 (click)="consoleValue()">click me</h2>
+
+<app-author-component 
+    *ngFor="let author of authors" 
+    [name]="author"></app-author-component>

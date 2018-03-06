@@ -1,0 +1,22 @@
+<div id="toolbar">
+  <button (click)="deleteItems()">X</button>
+</div>
+<ul *ngIf="list && list.items.length;else nolistcontent" class="list-container">
+  <!-- <li class="list-item" 
+  *ngFor="let item of items"
+  (click)="selectItem(item)"
+  [ngClass]="{'selected': isSelected(item)}">{{item.text}}</li> -->
+  <app-list-item *ngFor="let item of list.items" 
+  [item]="item"
+  (onSelect)="selectItem($event)"></app-list-item>
+</ul>
+
+<app-new-item (addNewTask)="newTask($event)"></app-new-item>
+
+<ng-template #nolistcontent>
+  <div>No items in the list</div>
+</ng-template>
+
+<div>
+  <button (click)="goBack()">Back</button>
+</div>
