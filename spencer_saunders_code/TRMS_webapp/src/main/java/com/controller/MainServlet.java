@@ -18,7 +18,7 @@ public class MainServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException{
-        super.init();
+        controllers.put("empdata", new EmployeeController());
     }
 
     @Override
@@ -49,7 +49,7 @@ public class MainServlet extends HttpServlet {
             //Employee emp = (Employee)parseBody(req.getParameter("employee"));
             String uname = testEmployee.getUsername();
             String pword = testEmployee.getPassword();
-            r = ((EmployeeController) controllers.get("login")).getEmployee(uname, pword);
+            r = ((EmployeeController) controllers.get("empdata")).getEmployee(uname, pword);
             rData = new ObjectMapper().writeValueAsString(r);
         }
 //        } else if(controllerPath.equalsIgnoreCase("/lists/list")) {

@@ -214,6 +214,9 @@ public class Employee {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "Employee " + emp_id + ": \n" +
+                "Name: " + first_name + " " + last_name + "\n" +
+                "Title: " + title;
+        //return super.toString();
     }
 }

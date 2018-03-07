@@ -10,7 +10,8 @@ public class EmployeeController implements Controller {
     public Employee getEmployee(String username, String password){
 
         Employee emp = employeeService.getEmployee(username);
-        if(emp.getPassword().equals(password)){
+        String pword = emp.getPassword();
+        if(pword.equals(password)){
          return emp;
         }else{
             return null;
