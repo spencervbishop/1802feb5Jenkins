@@ -61,6 +61,23 @@ public class MainServlet extends HttpServlet {
         resp.setHeader("Content-Type", "application/json");
         resp.getWriter().write(rData);
     }
+
+
+//private void processGet(HttpServletRequest req, HttpServletResponse resp, String controllerPath) throws IOException, ServletException {
+//        Object r;
+//        String rData = null;
+//        if(controllerPath.equalsIgnoreCase("/lists")) {
+//        r = ((ApplicationController)controllers.get("lists")).getAllLists();
+//        rData = new ObjectMapper().writeValueAsString(r);
+//        } else if(controllerPath.equalsIgnoreCase("/lists/list")) {
+//        int id = Integer.parseInt(req.getParameter("id"));
+//        r = ((ListDataController)controllers.get("lists")).getOneList(id);
+//        rData = new ObjectMapper().writeValueAsString(r);
+//
+//        }
+//        resp.setHeader("Content-Type", "application/json");
+//        resp.getWriter().write(rData);
+//        }
 //
 //    private void processPut(HttpServletRequest req, HttpServletResponse resp, String controllerPath) throws IOException, ServletException {
 //        int r;
