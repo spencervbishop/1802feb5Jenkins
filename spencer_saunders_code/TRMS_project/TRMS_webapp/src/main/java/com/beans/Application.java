@@ -8,7 +8,7 @@ public class Application {
     int app_id;
     int emp_id;
     int event_id;
-    Date event_date;
+    String event_date;
     String location;
     double cost;
     String description;
@@ -29,9 +29,10 @@ public class Application {
     }
 
     //FILLED BY THE USER --> PUT IN DATABASE
-    public Application(Employee emp, Event evt, Date event_date, String location, double cost, String description,
+    public Application(Employee emp, Event evt, String event_date, String location, double cost, String description,
                        String work_just, //boolean ds_approved, boolean dh_approved, boolean benco_approved,
                        boolean approval_email, int work_time_missed) {
+        this.emp_id = emp.emp_id;
         this.event_id = evt.event_id;
         this.event_date = event_date;
         this.location = location;
@@ -57,8 +58,27 @@ public class Application {
         setEvent_date(event_date);
     }
 
+    public Application(int emp_id, int event_id, String event_date, String location, double cost, String description,
+                       String work_just, boolean ds_approved, boolean dh_approved, boolean benco_approved,
+                       boolean approval_email, int work_time_missed, double proj_reimb, boolean urgent){
+        this.emp_id = emp_id;
+        this.event_id = event_id;
+        this.event_date = event_date;
+        this.location = location;
+        this.cost = cost;
+        this.description = description;
+        this.work_just = work_just;
+        this.ds_approved = ds_approved;
+        this.dh_approved = dh_approved;
+        this.benco_approved = benco_approved;
+        this.approval_email = approval_email;
+        this.work_time_missed = work_time_missed;
+        this.proj_reimb = proj_reimb;
+        this.urgent = urgent;
+    }
+
     //FILLED BY THE DATABASE --> SHOWN TO USER
-    public Application(int app_id, int emp_id, int event_id, Date event_date, String location, double cost, String description,
+    public Application(int app_id, int emp_id, int event_id, String event_date, String location, double cost, String description,
                        String work_just, boolean ds_approved, boolean dh_approved, boolean benco_approved, boolean approval_email,
                        int work_time_missed, double proj_reimb, boolean urgent) {
         this.app_id = app_id;
@@ -104,7 +124,7 @@ public class Application {
         this.event_id = event_id;
     }
 
-    public Date getEvent_date() {
+    public String getEvent_date() {
         return event_date;
     }
 
@@ -196,20 +216,20 @@ public class Application {
         this.urgent = urgent;
     }
 
-    public void setEvent_date(Date event_date) {
+    public void setEvent_date(String event_date) {
         //EVENT SHOULD BE MORE THAN A WEEK AWAY
         //THIS IS CHECKED IN THE CONTROL LAYER
         //SET UP A TRIGGER IN THE DATABASE
         this.event_date =event_date;
 
         //IF EVENT IS LESS THAN TWO WEEKS AWAY, REQUEST BECOMES URGENT
-        SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
-        Date today = new Date();
-        Date date = event_date;
-        long daysDiff = (date.getTime()-today.getTime())/(24*60*60*1000);
-        if(daysDiff<=13){
-            this.urgent = true;
-        }
+//        SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+//        Date today = new Date();
+//        Date date = event_date;
+//        long daysDiff = (date.getTime()-today.getTime())/(24*60*60*1000);
+//        if(daysDiff<=13){
+//            this.urgent = true;
+//        }
     }
 
     public String getTestingVar() {
@@ -234,6 +254,22 @@ public class Application {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "Application{" +
+                "app_id=" + app_id +
+                ", emp_id=" + emp_id +
+                ", event_id=" + event_id +
+                ", event_date='" + event_date + '\'' +
+                ", location='" + location + '\'' +
+                ", cost=" + cost +
+                ", description='" + description + '\'' +
+                ", work_just='" + work_just + '\'' +
+                ", ds_approved=" + ds_approved +
+                ", dh_approved=" + dh_approved +
+                ", benco_approved=" + benco_approved +
+                ", approval_email=" + approval_email +
+                ", work_time_missed=" + work_time_missed +
+                ", proj_reimb=" + proj_reimb +
+                ", urgent=" + urgent  +
+                '}';
     }
 }

@@ -36,7 +36,7 @@ public class ApplicationJDBC implements ApplicationDao {
 
                 int emp_id = rs.getInt("emp_id");
                 int event_id = rs.getInt("event_id");
-                Date event_time = rs.getDate("event_time"); //CHECK ON THIS.
+                String event_time = rs.getString("event_time"); //CHECK ON THIS.
                 String event_loc = rs.getString("event_loc");
                 double event_cost = rs.getDouble("event_cost");
                 String desc = rs.getString("event_desc");
@@ -70,11 +70,11 @@ public class ApplicationJDBC implements ApplicationDao {
         try(Connection conn = connectionUtil.getConnection()){
             String query = "INSERT INTO applications (emp_id, event_id, event_time, event_loc, event_cost, event_desc, " +
                     "work_just, ds_approved, dh_approved, benco_approved, approval_email, work_time_missed, proj_reimb," +
-                    "urgent) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                    "urgent) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?) RETURNING app_id";
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setInt(1, app.getEmp_id());
             ps.setInt(2, app.getEvent_id());
-            ps.setDate(3, new java.sql.Date(app.getEvent_date().getTime()));
+            ps.setString(3, app.getEvent_date());
             ps.setString(4, app.getLocation());
             ps.setDouble(5, app.getCost());
             ps.setString(6, app.getDescription());

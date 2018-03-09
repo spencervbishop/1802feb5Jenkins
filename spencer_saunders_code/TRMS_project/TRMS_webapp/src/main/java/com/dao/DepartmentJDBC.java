@@ -25,7 +25,7 @@ public class DepartmentJDBC implements DepartmentDao {
     public int createDepartment(Department dept) {
         //DOES NOT TAKE AN DEPT_HEAD_ID
         try(Connection conn = connectionUtil.getConnection()){
-            String query = "INSERT INTO departments (dept_name) VALUES (?)";
+            String query = "INSERT INTO departments (dept_name) VALUES (?) RETURNING dept_id";
 
             PreparedStatement ps = conn.prepareStatement(query);
 

@@ -61,7 +61,7 @@ public class ApplicationServiceTest {
     @Test
     public void testSaveApplication() throws Exception {
         ApplicationService service = new ApplicationService(cu);
-        Date date = new Date();
+        String date = "date";
         Employee newEmp = new Employee(1, "firstname", "lastname", "username", "password", 2,
                 3, true, false, false, 1, 1000.00);
         Event newEvt = new Event(0.8, "format", "University course");
@@ -74,7 +74,7 @@ public class ApplicationServiceTest {
     @Test
     public void testUpdateApplicationInfo() throws Exception {
         ApplicationService service = new ApplicationService(cu);
-        Date date = new Date();
+        String date = "date";
 
         Employee newEmp = new Employee(1, "firstname", "lastname", "username", "password", 2,
                 3, true, false, false, 1, 1000.00);

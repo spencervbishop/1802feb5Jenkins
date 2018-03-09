@@ -52,7 +52,7 @@ public class ReimbursementJDBC implements ReimbursementDao {
     @Override
     public int saveReimbursement(Reimbursement re) {
         try(Connection conn = connectionUtil.getConnection()) {
-            String query = "INSERT INTO reimbursements (app_id, emp_id, award) VALUES (?,?,?)";
+            String query = "INSERT INTO reimbursements (app_id, emp_id, award) VALUES (?,?,?) RETURNING reimbursement_id";
             PreparedStatement ps = conn.prepareStatement(query);
 
             ps.setInt(1, re.getApplication_id());

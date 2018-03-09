@@ -60,6 +60,9 @@ public class Employee {
         benco_id = benco;
         department = dept;
         avail_amount = amount;
+        this.isds = isds;
+        this.isdh = isdh;
+        this.isbenco = isbenco;
 
         if(isds && !isdh & !isbenco){
             title = EmployeeType.DIRECT_SUPERVISOR;
@@ -216,7 +219,9 @@ public class Employee {
     public String toString() {
         return "Employee " + emp_id + ": \n" +
                 "Name: " + first_name + " " + last_name + "\n" +
-                "Title: " + title;
+                "Title: " + title + "\n" +
+                "Supervisor: " + super_id + "\n" +
+                "Benco: " + benco_id;
         //return super.toString();
     }
 }

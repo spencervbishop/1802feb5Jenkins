@@ -60,7 +60,7 @@ ConnectionUtil cu;
     public void saveApplication() throws Exception {
 
         when(result.getInt(anyString())).thenReturn(1);
-        Date date = new Date();
+        String date = "date";
 
 
         ApplicationJDBC dao = new ApplicationJDBC(cu);
@@ -76,7 +76,7 @@ ConnectionUtil cu;
     @Test
     public void updateApplication() throws Exception{
         ApplicationJDBC dao = new ApplicationJDBC(cu);
-        Date date = new Date();
+        String date = "date";
 
         Employee newEmp = new Employee(1, "firstname", "lastname", "username", "password", 2,
                 3, true, false, false, 1, 1000.00);

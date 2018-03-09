@@ -62,7 +62,7 @@ public class ReimbursementServiceTest {
     public void testSaveReimbursement() throws Exception {
         when(result.getInt(anyString())).thenReturn(1);
         ReimbursementService service = new ReimbursementService(cu);
-        Date date = new Date();
+        String date = "date";
         Employee newEmp = new Employee(1, "firstname", "lastname", "username", "password", 2,
                 3, true, false, false, 1, 1000.00);
         Event newEvt = new Event(0.8, "format", "University course");
@@ -76,7 +76,7 @@ public class ReimbursementServiceTest {
     @Test
     public void testUpdateReimbursementInfo() throws Exception {
         ReimbursementService service = new ReimbursementService(cu);
-        Date date = new Date();
+        String date = "date";
 
         Employee newEmp = new Employee(1, "firstname", "lastname", "username", "password", 2,
                 3, true, false, false, 1, 1000.00);

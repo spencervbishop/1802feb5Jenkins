@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.beans.Application;
 import com.beans.Employee;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javax.servlet.ServletException;
@@ -19,6 +20,7 @@ public class MainServlet extends HttpServlet {
     @Override
     public void init() throws ServletException{
         controllers.put("empdata", new EmployeeController());
+        controllers.put("forms", new ApplicationController());
     }
 
     @Override
@@ -51,13 +53,11 @@ public class MainServlet extends HttpServlet {
             String pword = testEmployee.getPassword();
             r = ((EmployeeController) controllers.get("empdata")).getEmployee(uname, pword);
             rData = new ObjectMapper().writeValueAsString(r);
+        } else if(controllerPath.equalsIgnoreCase("/form")) {
+            Application testApplication = (Application)parseBody(req.getReader(), Application.class);
+            r = ((ApplicationController)controllers.get("forms")).saveApplication(testApplication);
+            rData = new ObjectMapper().writeValueAsString(r);
         }
-//        } else if(controllerPath.equalsIgnoreCase("/lists/list")) {
-//            int id = Integer.parseInt(req.getParameter("id"));
-//            r = ((EmployeeController)controllers.get("lists")).getOneList(id);
-//            rData = new ObjectMapper().writeValueAsString(r);
-//
-//        }
         resp.setHeader("Content-Type", "application/json");
         resp.getWriter().write(rData);
     }

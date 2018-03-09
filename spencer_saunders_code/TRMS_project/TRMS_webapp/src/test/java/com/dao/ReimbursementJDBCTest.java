@@ -53,7 +53,7 @@ public class ReimbursementJDBCTest {
     @Test
     public void saveReimbursement() throws Exception {
         ReimbursementJDBC dao = new ReimbursementJDBC(cu);
-        Date date = new Date();
+        String date = "date";
 
         Employee newEmp = new Employee(1, "firstname", "lastname", "username", "password", 2,
                 3, true, false, false, 1, 1000.00);
@@ -76,7 +76,7 @@ public class ReimbursementJDBCTest {
     @Test
     public void updateReimbursement() throws Exception{
         ReimbursementJDBC dao = new ReimbursementJDBC(cu);
-        Date date = new Date();
+        String date = "date";
 
         Employee newEmp = new Employee(1, "firstname", "lastname", "username", "password", 2,
                 3, true, false, false, 1, 1000.00);

@@ -24,7 +24,7 @@ public class EventJDBC implements EventDao {
     public int createEvent(Event evt) {
         try(Connection conn = connectionUtil.getConnection()){
             String query = "INSERT INTO events (event_type, grading_format, reimburse_rate)" +
-                    " VALUES (?,?,?)";
+                    " VALUES (?,?,?) RETURNING event_id";
             PreparedStatement ps = conn.prepareStatement(query);
 
             ps.setString(1, evt.getEvent_type());
@@ -56,6 +56,7 @@ public class EventJDBC implements EventDao {
                 String format = rs.getString("grading_format");
                 double rate = rs.getDouble("reimburse_rate");
                 Event evt = new Event(rate, format, type);
+                evt.setEvent_id(evt_id);
                 evt.setTestingVar("tested");
                 return evt;
             }

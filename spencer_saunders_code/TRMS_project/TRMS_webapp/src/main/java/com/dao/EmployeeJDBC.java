@@ -42,7 +42,12 @@ public class EmployeeJDBC implements EmployeeDao{
                 String fname = result.getString("first_name");
                 String lname = result.getString("last_name");
                 String pass = result.getString("password");
-                int ds = result.getInt("super_id");
+                int ds;
+//                if(result.getInt("super_id")!= null){
+                    ds = result.getInt("super_id");
+//                }else{
+//                    ds = 0;
+//                }
                 int benco = result.getInt("benco_id");
                 boolean isDs = result.getBoolean("isds");
                 boolean isDh = result.getBoolean("isdh");
@@ -136,7 +141,7 @@ public class EmployeeJDBC implements EmployeeDao{
             EmployeeType title = emp.getTitle();
 
             String query = "INSERT INTO employees (first_name, last_name, username, password, title, super_id, benco_id, " +
-                    "avail_amt, isds, isdh, isbenco, dept_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+                    "avail_amt, isds, isdh, isbenco, dept_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?) RETURNING emp_id";
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, emp.getFirst_name());
             ps.setString(2, emp.getLast_name());
