@@ -15,7 +15,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import static org.junit.Assert.*;
 import static org.mockito.Matchers.anyString;
@@ -47,6 +49,9 @@ ConnectionUtil cu;
         when(ps.executeUpdate()).thenReturn(1);
         when(result.next()).thenReturn(true).thenReturn(false);
         when(result.getString(anyString())).thenReturn("tested");
+        when(result.getInt(anyString())).thenReturn(1);
+        when(result.getDouble(anyString())).thenReturn(2.01);
+        when(result.getBoolean(anyString())).thenReturn(false);
     }
 
     @Test
@@ -54,6 +59,26 @@ ConnectionUtil cu;
         ApplicationJDBC dao = new ApplicationJDBC(cu);
         Application application = dao.getApplication(1);
         assertTrue("tested".equals(application.getTestingVar()));
+    }
+
+    @Test
+    public void getApplictionsOfSupervisor() throws Exception{
+        ApplicationJDBC dao = new ApplicationJDBC(cu);
+        List<Application> list = dao.getApplicationsOfSupervisor(7);
+        Application expected = new Application(1, 1, 1, "tested", "tested", 2.01, "tested",
+                "tested", false, false, false, false, 1, 2.01, false);
+        expected.setTestingVar("tested");
+        assertTrue(expected.equals(list.get(0)));
+    }
+
+    @Test
+    public void getApplicationsOfEmployee() throws Exception{
+        ApplicationJDBC dao = new ApplicationJDBC(cu);
+        List<Application> list = dao.getApplicationsOfEmployee(1);
+        Application expected = new Application(1, 1, 1, "tested", "tested", 2.01, "tested",
+                "tested", false, false, false, false, 1, 2.01, false);
+        expected.setTestingVar("tested");
+        assertTrue(expected.equals(list.get(0)));
     }
 
     @Test

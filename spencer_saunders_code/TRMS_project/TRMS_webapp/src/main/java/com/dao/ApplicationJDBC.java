@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -62,6 +63,120 @@ public class ApplicationJDBC implements ApplicationDao {
 
     @Override
     public List<Application> getApplicationsOfEmployee(int emp_id) {
+        try(Connection conn = connectionUtil.getConnection()){
+            String query = "SELECT * FROM applications WHERE emp_id = ?";
+            PreparedStatement ps = conn.prepareStatement(query);
+
+            ps.setInt(1, emp_id);
+            List<Application> applications = new ArrayList<>();
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+
+                int app_id = rs.getInt("app_id");
+                int event_id = rs.getInt("event_id");
+                String event_time = rs.getString("event_time"); //CHECK ON THIS.
+                String event_loc = rs.getString("event_loc");
+                double event_cost = rs.getDouble("event_cost");
+                String desc = rs.getString("event_desc");
+                String just = rs.getString("work_just");
+                boolean ds_approved = rs.getBoolean("ds_approved");
+                boolean dh_approved = rs.getBoolean("dh_approved");
+                boolean benco_approved = rs.getBoolean("benco_approved");
+                boolean appEmail = rs.getBoolean("approval_email");
+                int hours = rs.getInt("work_time_missed");
+                double proj_reimb = rs.getDouble("proj_reimb");
+                boolean urgent = rs.getBoolean("urgent");
+
+                Application application = new Application(app_id, emp_id, event_id, event_time, event_loc, event_cost, desc,
+                        just, ds_approved, dh_approved, benco_approved, appEmail, hours, proj_reimb, urgent);
+                application.setTestingVar("tested");
+                applications.add(application);
+            }
+            return applications;
+
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+//    public List<Application> getApplicationsOfDeptHead(int supervisor){
+//        try(Connection conn = connectionUtil.getConnection()){
+//            String query = "SELECT * FROM applications NATURAL JOIN employees WHERE department = ?";
+//            PreparedStatement ps = conn.prepareStatement(query);
+//            ps.setInt(1, supervisor);
+//
+//            List<Application> applications = new ArrayList<>();
+//            ResultSet rs = ps.executeQuery();
+//            while(rs.next()){
+//
+//                int emp_id = rs.getInt("emp_id");
+//                int app_id = rs.getInt("app_id");
+//                int event_id = rs.getInt("event_id");
+//                String event_time = rs.getString("event_time"); //CHECK ON THIS.
+//                String event_loc = rs.getString("event_loc");
+//                double event_cost = rs.getDouble("event_cost");
+//                String desc = rs.getString("event_desc");
+//                String just = rs.getString("work_just");
+//                boolean ds_approved = rs.getBoolean("ds_approved");
+//                boolean dh_approved = rs.getBoolean("dh_approved");
+//                boolean benco_approved = rs.getBoolean("benco_approved");
+//                boolean appEmail = rs.getBoolean("approval_email");
+//                int hours = rs.getInt("work_time_missed");
+//                double proj_reimb = rs.getDouble("proj_reimb");
+//                boolean urgent = rs.getBoolean("urgent");
+//
+//                Application application = new Application(app_id, emp_id, event_id, event_time, event_loc, event_cost, desc,
+//                        just, ds_approved, dh_approved, benco_approved, appEmail, hours, proj_reimb, urgent);
+//                application.setTestingVar("tested");
+//                applications.add(application);
+//            }
+//
+//            return applications;
+//        }catch(SQLException e){
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
+
+
+
+    public List<Application> getApplicationsOfSupervisor(int supervisor){
+        try(Connection conn = connectionUtil.getConnection()){
+            String query = "SELECT * FROM applications NATURAL JOIN employees WHERE super_id = ?";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1, supervisor);
+
+            List<Application> applications = new ArrayList<>();
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+
+                int emp_id = rs.getInt("emp_id");
+                int app_id = rs.getInt("app_id");
+                int event_id = rs.getInt("event_id");
+                String event_time = rs.getString("event_time"); //CHECK ON THIS.
+                String event_loc = rs.getString("event_loc");
+                double event_cost = rs.getDouble("event_cost");
+                String desc = rs.getString("event_desc");
+                String just = rs.getString("work_just");
+                boolean ds_approved = rs.getBoolean("ds_approved");
+                boolean dh_approved = rs.getBoolean("dh_approved");
+                boolean benco_approved = rs.getBoolean("benco_approved");
+                boolean appEmail = rs.getBoolean("approval_email");
+                int hours = rs.getInt("work_time_missed");
+                double proj_reimb = rs.getDouble("proj_reimb");
+                boolean urgent = rs.getBoolean("urgent");
+
+                Application application = new Application(app_id, emp_id, event_id, event_time, event_loc, event_cost, desc,
+                        just, ds_approved, dh_approved, benco_approved, appEmail, hours, proj_reimb, urgent);
+                application.setTestingVar("tested");
+                applications.add(application);
+            }
+
+            return applications;
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
         return null;
     }
 

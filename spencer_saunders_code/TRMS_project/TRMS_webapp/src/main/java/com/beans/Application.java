@@ -2,6 +2,7 @@ package com.beans;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 
 public class Application {
 
@@ -248,8 +249,26 @@ public class Application {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Application)) return false;
+        Application that = (Application) o;
+        return getApp_id() == that.getApp_id() &&
+                getEmp_id() == that.getEmp_id() &&
+                getEvent_id() == that.getEvent_id() &&
+                Double.compare(that.getCost(), getCost()) == 0 &&
+                isDs_approved() == that.isDs_approved() &&
+                isDh_approved() == that.isDh_approved() &&
+                isBenco_approved() == that.isBenco_approved() &&
+                isApproval_email() == that.isApproval_email() &&
+                getWork_time_missed() == that.getWork_time_missed() &&
+                Double.compare(that.getProj_reimb(), getProj_reimb()) == 0 &&
+                isUrgent() == that.isUrgent() &&
+                Objects.equals(getEvent_date(), that.getEvent_date()) &&
+                Objects.equals(getLocation(), that.getLocation()) &&
+                Objects.equals(getDescription(), that.getDescription()) &&
+                Objects.equals(getWork_just(), that.getWork_just()) &&
+                Objects.equals(getTestingVar(), that.getTestingVar());
     }
 
     @Override

@@ -15,8 +15,9 @@ public class ApplicationController implements Controller {
         return id;
     }
 
-//    public List<Application> getAllApplications(){
+//    public List<Application> getAllApplications(int emp_id){
 //        List<Application> allApps = new ArrayList<>();
+//
 //
 //    }
 }
